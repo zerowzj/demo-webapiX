@@ -11,13 +11,13 @@ import java.util.Map;
  */
 public class Results {
 
-    private static final String CODE_KEY = "code";
+    private static final String KEY_CODE = "code";
 
-    private static final String DESC_KEY = "desc";
+    private static final String KEY_DESC = "desc";
 
-    private static final String DATA_KEY = "data";
+    private static final String KEY_DATA = "data";
 
-    private static final String REQUEST_ID_KEY = "request_id";
+    private static final String KEY_REQUEST_ID = "request_id";
 
     /**
      * 构造成功结果
@@ -42,12 +42,12 @@ public class Results {
 
     private static Map<String, Object> build(String code, String desc, Map<String, Object> data) {
         Map<String, Object> result = Maps.newHashMap();
-        result.put(CODE_KEY, code);
-        result.put(DESC_KEY, desc);
+        result.put(KEY_CODE, code);
+        result.put(KEY_DESC, desc);
         if (data == null) {
             data = Maps.newHashMap();
         }
-        result.put(DATA_KEY, data);
+        result.put(KEY_DATA, data);
         //result.put(REQUEST_ID_KEY, TrackKey.get());
         return result;
     }
