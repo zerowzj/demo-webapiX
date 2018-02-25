@@ -5,8 +5,11 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class HttpServlets {
+public abstract class HttpServlets {
 
+    /**
+     *
+     */
     public static HttpServletRequest toHttp(ServletRequest request) {
         return (HttpServletRequest) request;
     }
@@ -15,7 +18,20 @@ public class HttpServlets {
         return (HttpServletResponse) response;
     }
 
-    public static String getBodyString(HttpServletRequest request) {
+    /**
+     * 是否是
+     */
+    public static boolean isMult() {
+        return true;
+    }
+
+    /**
+     * 获取请求体字符串
+     *
+     * @param request
+     * @return String
+     */
+    public static String getBodyStr(HttpServletRequest request) {
         return null;
     }
 }
