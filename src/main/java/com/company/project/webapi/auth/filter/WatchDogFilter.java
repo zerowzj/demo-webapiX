@@ -27,7 +27,7 @@ public class WatchDogFilter extends OncePerRequestFilter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WatchDogFilter.class);
 
-    private static final String HEADER_NAME_REQUEST_ID = "Request-Id";
+    private static final String NAME_REQUEST_ID = "Request-Id";
 
     private static final String REQUEST_ID = "request_id";
 
@@ -42,7 +42,7 @@ public class WatchDogFilter extends OncePerRequestFilter {
         String uri = request.getRequestURI();
         try {
             //Request Id
-            String requestId = request.getHeader(HEADER_NAME_REQUEST_ID);
+            String requestId = request.getHeader(NAME_REQUEST_ID);
             if (Strings.isNullOrEmpty(requestId)) {
                 requestId = "1234567890";
                 //LOGGER.warn("URI[{}]使用自动生成的request_id[{}]！", uri, requestId);
