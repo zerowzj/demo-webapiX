@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- ==================== -->
+    <!--        入口          -->
+    <!-- URL表达式说明
+     1、URL目录是基于HttpServletRequest.getContextPath()此目录设置
+     2、URL可使用通配符，**代表任意子目录
+     3、Shiro验证URL时，URL匹配成功便不再继续匹配查找。所以要注意配置文件中的URL顺序，尤其在使用通配符时。
+Shiro可以通过配置文件实现基于URL的授权验证。FilterChain定义格式：
+URL_Ant_Path_Expression = Path_Specific_Filter_Chain
+每个URL配置，表示匹配该URL的应用程序请求将由对应的过滤器进行验证。
+     Filter Chain定义说明
+     1、一个URL可以配置多个Filter，使用逗号分隔
+     2、当设置多个过滤器时，全部验证通过，才视为通过
+     3、部分过滤器可指定参数，如perms，roles
+    重要：这里的加载顺序是自上而下，所以看到我们/** 写到最后，因为匹配不中最后都让这个匹配中。后面我们会讲到采用配置文件加载怎么有序加载。
+    所以记住一点，权限为金字塔状，先精确匹配或是权限稍小在前面，权限大（模糊匹配）的在后面。
+    -->
+    <!-- ==================== -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="filters">
+            <map>
+                <entry key="watchDog" value-ref="watchDog"/>
+                <entry key="apiGuard" value-ref="apiGuard"/>
+                <entry key="apiAuth" value-ref="apiAuth"/>
+            </map>
+        </property>
+        <property name="filterChainDefinitions">
+            <value>
+                /notify** = watchDog, anon               <!-- 通知回调相关不哨兵不认证 -->
+                /login** = watchDog, apiGuard, anon      <!-- 登录相关不认证 -->
+                /register** = watchDog, apiGuard, anon   <!-- 注册相关不认证 -->
+                /reset_pwd** = watchDog, apiGuard, anon  <!-- 密码找回不认证 -->
+                /auth/** = watchDog, apiGuard, anon      <!-- 短信相关不认证 -->
+                /** = watchDog, apiGuard, apiAuth
+            </value>
+        </property>
+    </bean>
+    <!-- ==================== -->
+    <!--                      -->
+    <!-- ====================
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod" value="org.apache.shiro.SecurityUtils.setSecurityManager"/>
+        <property name="arguments" ref="securityManager"/>
+    </bean>
+    -->
+    <!-- ==================== -->
+    <!--      安全管理器       -->
+    <!-- ==================== -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!--<property name="realm" ref="customRealm"/>-->
+        <property name="subjectFactory" ref="customSubjectFactory"/>
+        <property name="sessionManager" ref="sessionManager"/>
+        <property name="subjectDAO" ref="defaultSubjectDAO"/>
+    </bean>
+    <!-- Subject DAO -->
+    <bean id="defaultSubjectDAO" class="org.apache.shiro.mgt.DefaultSubjectDAO">
+        <property name="sessionStorageEvaluator" ref="defaultSessionStorageEvaluator"/>
+    </bean>
+    <!-- Session Storage Evaluator -->
+    <bean id="defaultSessionStorageEvaluator" class="org.apache.shiro.mgt.DefaultSessionStorageEvaluator">
+        <property name="sessionStorageEnabled" value="false"/>
+    </bean>
+    <!-- ==================== -->
+    <!--      Subject工厂     -->
+    <!-- ==================== -->
+    <bean id="customSubjectFactory" class="com.company.project.webapi.auth.ext.CustomSubjectFactory"/>
+    <!-- ==================== -->
+    <!--       会话管理器      -->
+    <!-- ==================== -->
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <property name="sessionValidationSchedulerEnabled" value="false"/>
+    </bean>
+    <!-- ==================== -->
+    <!--       Realm实现      -->
+    <!-- ==================== -->
+    <!--<bean id="customRealm" class="com.company.project.auth.realm.CustomRealm">-->
+    <!--<property name="cachingEnabled" value="false"/>-->
+    <!--</bean>-->
+    <!-- ==================== -->
+    <!--      过滤器定义       -->
+    <!-- ==================== -->
+    <bean id="watchDog" class="com.company.project.webapi.auth.filter.WatchDog"/>
+    <bean id="apiGuard" class="com.company.project.webapi.auth.filter.ApiGuard"/>
+    <bean id="apiAuth" class="com.company.project.webapi.auth.filter.ApiAuth"/>
+</beans>
