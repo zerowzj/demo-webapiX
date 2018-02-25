@@ -1,9 +1,7 @@
 package com.company.project.webapi.auth.filter;
 
-import com.company.project.webapi.auth.support.Request;
-import com.company.project.webapi.auth.support.TrackKey;
-import com.company.project.webapi.auth.support.Uris;
-import com.company.util.HttpServlets;
+import com.company.project.webapi.auth.Uris;
+import com.company.project.webapi.support.util.HttpServlets;
 import com.google.common.base.Stopwatch;
 import com.google.common.base.Strings;
 import org.apache.shiro.web.servlet.OncePerRequestFilter;
@@ -21,15 +19,15 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 看门狗
+ * 看门狗过滤器
  *
  * @author wangzhj
  */
-public class WatchDog extends OncePerRequestFilter {
+public class WatchDogFilter extends OncePerRequestFilter {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(WatchDog.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(WatchDogFilter.class);
 
-    private static final String REQUEST_ID_NAME = "Request-Id";
+    private static final String HEADER_NAME_REQUEST_ID = "Request-Id";
 
     private static final String REQUEST_ID = "request_id";
 
@@ -43,17 +41,14 @@ public class WatchDog extends OncePerRequestFilter {
         HttpServletResponse response = HttpServlets.toHttp(servletResponse);
         String uri = request.getRequestURI();
         try {
-            //
-            Request.set(request);
-            //==> Request Id
-            String requestId = request.getHeader(REQUEST_ID_NAME);
+            //Request Id
+            String requestId = request.getHeader(HEADER_NAME_REQUEST_ID);
             if (Strings.isNullOrEmpty(requestId)) {
                 requestId = "1234567890";
                 //LOGGER.warn("URI[{}]使用自动生成的request_id[{}]！", uri, requestId);
             }
             MDC.put(REQUEST_ID, requestId);
-            TrackKey.set(requestId);
-            //==> Uri
+            //Uri
             if (!Uris.isLegal(uri)) {
                 response.sendError(404);
                 LOGGER.warn("URI[{}]非法！", uri);
@@ -63,9 +58,6 @@ public class WatchDog extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
         } finally {
             LOGGER.info("===> URI[{}] cost [{} ms]", uri, stopwatch.elapsed(TimeUnit.MILLISECONDS));
-            //清理
-            Request.remove();
-            TrackKey.remove();
             MDC.clear();
         }
     }
