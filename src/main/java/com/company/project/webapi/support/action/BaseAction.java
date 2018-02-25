@@ -1,6 +1,6 @@
 package com.company.project.webapi.support.action;
 
-import com.company.project.webapi.web.Results;
+import com.company.project.webapi.support.Results;
 import com.company.project.webapi.support.context.RequestContext;
 import com.company.project.webapi.support.util.JsonUtil;
 import org.slf4j.Logger;
@@ -44,7 +44,7 @@ public abstract class BaseAction implements Action {
             checkData(cxt, params);
 
             Map<String, Object> data = execute(cxt, params);
-            result = Results.buildOk(data);
+            result = Results.ok(data);
             LOGGER.info("===> o: {}", JsonUtil.toJson(result));
         } catch (Exception ex) {
             throw ex;

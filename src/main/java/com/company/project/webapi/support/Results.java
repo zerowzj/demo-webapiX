@@ -1,4 +1,4 @@
-package com.company.project.webapi.web;
+package com.company.project.webapi.support;
 
 import com.google.common.collect.Maps;
 
@@ -25,7 +25,7 @@ public class Results {
      * @param data
      * @return Map
      */
-    public static Map<String, Object> buildOk(Map<String, Object> data) {
+    public static Map<String, Object> ok(Map<String, Object> data) {
         return build("0000", "成功", data);
     }
 
@@ -36,7 +36,7 @@ public class Results {
      * @param desc
      * @return Map
      */
-    public static Map<String, Object> buildNotOk(String code, String desc) {
+    public static Map<String, Object> error(String code, String desc) {
         return build(code, desc, null);
     }
 

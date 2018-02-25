@@ -7,9 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public abstract class HttpServlets {
 
-    /**
-     *
-     */
     public static HttpServletRequest toHttp(ServletRequest request) {
         return (HttpServletRequest) request;
     }

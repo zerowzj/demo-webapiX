@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
@@ -22,11 +24,10 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler(Throwable.class)
     @ResponseBody
-    public Map<String, Object> resolveException(Exception ex) {
+    public Map<String, Object> resolveException(HttpServletRequest request, HttpServletResponse response,
+                                                Exception ex) {
         LOGGER.error("发生异常", ex);
-
         Map<String, Object> result;
-
         return null;
     }
 }
