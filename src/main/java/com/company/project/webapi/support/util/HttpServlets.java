@@ -16,9 +16,12 @@ public abstract class HttpServlets {
     }
 
     /**
-     * 是否是
+     * 是否是文件上传
+     *
+     * @param request
+     * @return boolean
      */
-    public static boolean isMult() {
+    public static boolean isMultipart(HttpServletRequest request) {
         return true;
     }
 
