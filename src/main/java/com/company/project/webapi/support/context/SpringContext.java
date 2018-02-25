@@ -41,6 +41,18 @@ public class SpringContext implements ApplicationContextAware {
     }
 
     /**
+     * 获取Bean
+     *
+     * @param name
+     * @param clazz
+     * @return T
+     */
+    public static <T> T getBean(String name, Class<T> clazz) {
+        T bean = (T) CXT.getBean(name, clazz);
+        return bean;
+    }
+
+    /**
      * 是否存在Bean
      */
     public static boolean containsBean(String name) {

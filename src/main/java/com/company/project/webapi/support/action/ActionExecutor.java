@@ -23,10 +23,27 @@ public class ActionExecutor {
      */
     public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response,
                                               Class<? extends Action> clazz) {
-        if (!SpringContext.containsBean(clazz)) {
-            throw new IllegalStateException("Bean不存在");
-        }
         Action action = SpringContext.getBean(clazz);
+        if (action == null) {
+            throw new IllegalStateException(String.format("action bean[%s] not exist!", clazz.getSimpleName()));
+        }
+        return action.doExecute(request, response);
+    }
+
+    /**
+     * 执行Action
+     *
+     * @param request  Http请求
+     * @param response Http响应
+     * @param name     执行类名称
+     * @return Map
+     */
+    public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response,
+                                              String name) {
+        Action action = SpringContext.getBean(name, Action.class);
+        if (action == null) {
+            throw new IllegalStateException(String.format("action bean[%s] not exist!", name));
+        }
         return action.doExecute(request, response);
     }
 }
