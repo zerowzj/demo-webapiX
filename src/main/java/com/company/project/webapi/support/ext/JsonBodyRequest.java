@@ -1,7 +1,7 @@
 package com.company.project.webapi.support.ext;
 
-import com.company.util.HttpServlets;
-import com.company.util.JsonUtil;
+import com.company.project.webapi.support.util.HttpServlets;
+import com.company.project.webapi.support.util.JsonUtil;
 import com.google.common.base.Strings;
 
 import javax.servlet.ServletInputStream;
@@ -15,26 +15,22 @@ import java.nio.charset.Charset;
 import java.util.Map;
 
 /**
- * Json Request
+ * Json请求
  *
  * @author wangzhj
  */
 public class JsonBodyRequest extends HttpServletRequestWrapper {
 
-    /**
-     * 请求体
-     */
+    /* 请求体 */
     private byte[] body = new byte[]{};
-    /**
-     * 参数Map
-     */
+    /* 参数Map */
     private Map<String, Object> params;
 
     public JsonBodyRequest(HttpServletRequest request) {
         super(request);
         //可重复读
         String bodyStr = HttpServlets.getBodyString(request);
-        if(!Strings.isNullOrEmpty(bodyStr)){
+        if (!Strings.isNullOrEmpty(bodyStr)) {
             body = bodyStr.getBytes(Charset.forName("UTF-8"));
             params = JsonUtil.fromJson(bodyStr);
         }

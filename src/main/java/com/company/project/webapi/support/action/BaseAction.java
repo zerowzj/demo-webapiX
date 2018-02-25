@@ -1,9 +1,8 @@
 package com.company.project.webapi.support.action;
 
-import com.company.exception.entity.param.EmptyValueException;
 import com.company.project.webapi.support.Results;
 import com.company.project.webapi.support.context.RequestContext;
-import com.company.util.JsonUtil;
+import com.company.project.webapi.support.util.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,11 +20,12 @@ public abstract class BaseAction implements Action {
 
     protected static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-    //参数
+    /* 参数 */
     private Map<String, Object> params;
 
     @Override
-    public final Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response) {
+    public final Map<String, Object> doExecute(HttpServletRequest request,
+                                               HttpServletResponse response) {
         //设置参数
         this.params = request.getParameterMap();
         LOGGER.info("===> i: {}", JsonUtil.toJson(params));
@@ -62,14 +62,6 @@ public abstract class BaseAction implements Action {
         return (T) params.get(paramName);
     }
 
-    public <T> T checkNotEmpty(String paramName) {
-        Object obj = params.get(paramName);
-        if (obj == null) {
-            throw new EmptyValueException(paramName);
-        }
-        return null;
-    }
-
     /**
      * 验证参数
      *
@@ -83,7 +75,7 @@ public abstract class BaseAction implements Action {
      *
      * @param cxt
      * @param params
-     * @return Map<String, Object>
+     * @return Map
      */
     public abstract Map<String, Object> execute(RequestContext cxt, Map<String, Object> params);
 }

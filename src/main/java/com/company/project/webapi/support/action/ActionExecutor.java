@@ -16,10 +16,10 @@ public class ActionExecutor {
     /**
      * 执行Action
      *
-     * @param request
-     * @param response
-     * @param clazz  执行类
-     * @return Map<String, Object>
+     * @param request  Http请求
+     * @param response Http响应
+     * @param clazz    执行类
+     * @return Map
      */
     public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response,
                                               Class<? extends Action> clazz) {

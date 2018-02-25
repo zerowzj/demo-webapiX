@@ -16,7 +16,7 @@ public interface Action {
      *
      * @param request
      * @param response
-     * @return Map<String, Object>
+     * @return Map
      */
-    public Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response);
+    Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response);
 }

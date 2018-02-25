@@ -23,19 +23,17 @@ URL_Ant_Path_Expression = Path_Specific_Filter_Chain
         <property name="securityManager" ref="securityManager"/>
         <property name="filters">
             <map>
-                <entry key="watchDog" value-ref="watchDog"/>
-                <entry key="apiGuard" value-ref="apiGuard"/>
-                <entry key="apiAuth" value-ref="apiAuth"/>
+                <entry key="watchDog" value-ref="watchDogFilter"/>
+                <entry key="auth" value-ref="authFilter"/>
             </map>
         </property>
         <property name="filterChainDefinitions">
             <value>
-                /notify** = watchDog, anon               <!-- 通知回调相关不哨兵不认证 -->
-                /login** = watchDog, apiGuard, anon      <!-- 登录相关不认证 -->
-                /register** = watchDog, apiGuard, anon   <!-- 注册相关不认证 -->
-                /reset_pwd** = watchDog, apiGuard, anon  <!-- 密码找回不认证 -->
-                /auth/** = watchDog, apiGuard, anon      <!-- 短信相关不认证 -->
-                /** = watchDog, apiGuard, apiAuth
+                /notify** = watchDog, anon     <!-- 通知回调相关不哨兵不认证 -->
+                /login** = watchDog, anon      <!-- 登录相关不认证 -->
+                /register** = watchDog, anon   <!-- 注册相关不认证 -->
+                /reset_pwd** = watchDog, anon  <!-- 密码找回不认证 -->
+                /** = watchDog, auth
             </value>
         </property>
     </bean>
@@ -83,7 +81,6 @@ URL_Ant_Path_Expression = Path_Specific_Filter_Chain
     <!-- ==================== -->
     <!--      过滤器定义       -->
     <!-- ==================== -->
-    <bean id="watchDog" class="com.company.project.webapi.auth.filter.WatchDog"/>
-    <bean id="apiGuard" class="com.company.project.webapi.auth.filter.ApiGuard"/>
-    <bean id="apiAuth" class="com.company.project.webapi.auth.filter.ApiAuth"/>
+    <bean id="watchDogFilter" class="com.company.project.webapi.auth.filter.WatchDogFilter"/>
+    <bean id="authFilter" class="com.company.project.webapi.auth.filter.AuthFilter"/>
 </beans>

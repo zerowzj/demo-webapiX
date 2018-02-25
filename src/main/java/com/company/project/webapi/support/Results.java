@@ -1,6 +1,5 @@
 package com.company.project.webapi.support;
 
-import com.company.project.webapi.auth.support.TrackKey;
 import com.google.common.collect.Maps;
 
 import java.util.Map;
@@ -24,19 +23,10 @@ public class Results {
      * 构造成功结果
      *
      * @param data
-     * @return Map<String, Object>
+     * @return Map
      */
     public static Map<String, Object> buildOk(Map<String, Object> data) {
         return build("0000", "成功", data);
-    }
-
-    /**
-     * 构造9999结果
-     *
-     * @return Map<String, Object>
-     */
-    public static Map<String, Object> buildNotOk() {
-        return buildNotOk("9999", "系统异常");
     }
 
     /**
@@ -44,7 +34,7 @@ public class Results {
      *
      * @param code
      * @param desc
-     * @return Map<String, Object>
+     * @return Map
      */
     public static Map<String, Object> buildNotOk(String code, String desc) {
         return build(code, desc, null);
@@ -58,7 +48,7 @@ public class Results {
             data = Maps.newHashMap();
         }
         result.put(DATA_KEY, data);
-        result.put(REQUEST_ID_KEY, TrackKey.get());
+        //result.put(REQUEST_ID_KEY, TrackKey.get());
         return result;
     }
 }
