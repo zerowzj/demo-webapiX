@@ -1,4 +1,4 @@
-package com.company.project.webapi.support.ext;
+package com.company.project.webapi.web.ext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.company.project.webapi.support.ext;
+package com.company.project.webapi.web.ext;
 
 import com.company.project.webapi.support.util.HttpServlets;
 import com.company.project.webapi.support.util.JsonUtil;
@@ -29,7 +29,7 @@ public class JsonBodyRequest extends HttpServletRequestWrapper {
     public JsonBodyRequest(HttpServletRequest request) {
         super(request);
         //可重复读
-        String bodyStr = HttpServlets.getBodyString(request);
+        String bodyStr = HttpServlets.getBodyStr(request);
         if (!Strings.isNullOrEmpty(bodyStr)) {
             body = bodyStr.getBytes(Charset.forName("UTF-8"));
             params = JsonUtil.fromJson(bodyStr);
