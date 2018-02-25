@@ -14,4 +14,8 @@ public class HttpServlets {
     public static HttpServletResponse toHttp(ServletResponse response) {
         return (HttpServletResponse) response;
     }
+
+    public static String getBodyString(HttpServletRequest request) {
+        return null;
+    }
 }
