@@ -3,33 +3,40 @@ package com.company.project.webapi.support.context;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Component;
 
 /**
  * Spring上下文
  *
  * @author wangzhj
  */
-@Component
 public class SpringContext implements ApplicationContextAware {
 
-    private static ApplicationContext context;
+    private static ApplicationContext CXT;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        context = applicationContext;
+        CXT = applicationContext;
     }
 
     /**
      * 获取Bean
+     *
+     * @param name
+     * @return T
      */
     public static <T> T getBean(String name) {
-        T bean = (T) context.getBean(name);
+        T bean = (T) CXT.getBean(name);
         return bean;
     }
 
+    /**
+     * 获取Bean
+     *
+     * @param clazz
+     * @return T
+     */
     public static <T> T getBean(Class<T> clazz) {
-        T bean = (T) context.getBean(clazz);
+        T bean = (T) CXT.getBean(clazz);
         return bean;
     }
 
@@ -37,12 +44,12 @@ public class SpringContext implements ApplicationContextAware {
      * 是否存在Bean
      */
     public static boolean containsBean(String name) {
-        return context.containsBean(name);
+        return CXT.containsBean(name);
     }
 
     public static boolean containsBean(Class<?> clazz) {
         boolean isExist = false;
-        if (context.getBean(clazz) != null) {
+        if (CXT.getBean(clazz) != null) {
             isExist = true;
         }
         return isExist;

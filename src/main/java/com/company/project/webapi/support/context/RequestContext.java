@@ -10,21 +10,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class RequestContext {
 
-    /**
-     * 请求
-     */
+    /* 请求 */
     private HttpServletRequest request;
-    /**
-     * 响应
-     */
+    /* 响应 */
     private HttpServletResponse response;
-    /**
-     * 用户编号
-     */
+    /* 用户编号 */
     private Long ubId;
-    /**
-     *
-     */
+    /*  */
     private String accessToken;
 
     public RequestContext(HttpServletRequest request, HttpServletResponse response) {
