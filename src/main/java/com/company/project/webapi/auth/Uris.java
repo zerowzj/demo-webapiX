@@ -1,4 +1,4 @@
-package com.company.project.webapi.auth.support;
+package com.company.project.webapi.auth;
 
 import com.company.project.webapi.support.context.SpringContext;
 import com.google.common.collect.Sets;
