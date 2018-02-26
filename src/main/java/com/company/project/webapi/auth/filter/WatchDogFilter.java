@@ -2,6 +2,7 @@ package com.company.project.webapi.auth.filter;
 
 import com.company.project.webapi.auth.Uris;
 import com.company.project.webapi.support.util.HttpServlets;
+import com.company.project.webapi.web.ext.JsonBodyRequest;
 import com.google.common.base.Stopwatch;
 import com.google.common.base.Strings;
 import org.apache.shiro.web.servlet.OncePerRequestFilter;
@@ -54,6 +55,11 @@ public class WatchDogFilter extends OncePerRequestFilter {
                 LOGGER.warn("URI[{}]非法！", uri);
                 return;
             }
+
+            if (!HttpServlets.isMultipart(request)) {
+                request = new JsonBodyRequest(request);
+            }
+
             //执行下个Filter
             filterChain.doFilter(request, response);
         } finally {
