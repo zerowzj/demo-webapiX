@@ -11,6 +11,7 @@ import org.springframework.context.ApplicationContextAware;
  */
 public class SpringContext implements ApplicationContextAware {
 
+    /* 应用上下文 */
     private static ApplicationContext CXT;
 
     @Override
@@ -20,33 +21,17 @@ public class SpringContext implements ApplicationContextAware {
 
     /**
      * 获取Bean
-     *
-     * @param name
-     * @return T
      */
     public static <T> T getBean(String name) {
         T bean = (T) CXT.getBean(name);
         return bean;
     }
 
-    /**
-     * 获取Bean
-     *
-     * @param clazz
-     * @return T
-     */
     public static <T> T getBean(Class<T> clazz) {
         T bean = (T) CXT.getBean(clazz);
         return bean;
     }
 
-    /**
-     * 获取Bean
-     *
-     * @param name
-     * @param clazz
-     * @return T
-     */
     public static <T> T getBean(String name, Class<T> clazz) {
         T bean = (T) CXT.getBean(name, clazz);
         return bean;
