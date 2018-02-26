@@ -22,8 +22,9 @@ public class AuthFilter extends AdviceFilter {
     @Override
     protected boolean preHandle(ServletRequest servletRequest, ServletResponse servletResponse) throws Exception {
         HttpServletRequest request = HttpServlets.toHttp(servletRequest);
-        Map<String, Object> params = request.getParameterMap();
+        Map<String, Object> paramMap = request.getParameterMap();
         try {
+
 
         } catch (Exception ex) {
             throw ex;
@@ -37,8 +38,7 @@ public class AuthFilter extends AdviceFilter {
     }
 
     @Override
-    public void afterCompletion(ServletRequest servletRequest, ServletResponse servletResponse,
-                                Exception ex) throws Exception {
+    public void afterCompletion(ServletRequest servletRequest, ServletResponse servletResponse, Exception ex) throws Exception {
 
     }
 }

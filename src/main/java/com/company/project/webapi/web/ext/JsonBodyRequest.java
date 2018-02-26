@@ -32,7 +32,7 @@ public class JsonBodyRequest extends HttpServletRequestWrapper {
         String bodyStr = HttpServlets.getBodyStr(request);
         if (!Strings.isNullOrEmpty(bodyStr)) {
             body = bodyStr.getBytes(Charset.forName("UTF-8"));
-            paramMap = JsonUtil.fromJson(bodyStr);
+            paramMap = JsonUtil.fromJson(bodyStr, Map.class);
         }
     }
 

@@ -50,11 +50,11 @@ public class WatchDogFilter extends OncePerRequestFilter {
             }
             MDC.put(REQUEST_ID, requestId);
             //Uri
-            if (!Uris.isLegal(uri)) {
+            /*if (!Uris.isLegal(uri)) {
                 response.sendError(404);
                 LOGGER.warn("URI[{}]非法！", uri);
                 return;
-            }
+            }*/
 
             if (!HttpServlets.isMultipart(request)) {
                 request = new JsonBodyRequest(request);

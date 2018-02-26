@@ -72,4 +72,6 @@
         <!--</map>-->
         <!--</property>-->
     </bean>
+
+    <bean class="com.company.project.webapi.support.context.SpringContext" />
 </beans>
