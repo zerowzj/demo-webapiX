@@ -29,10 +29,7 @@ URL_Ant_Path_Expression = Path_Specific_Filter_Chain
         </property>
         <property name="filterChainDefinitions">
             <value>
-                /notify** = watchDog, anon     <!-- 通知回调相关不哨兵不认证 -->
-                /login** = watchDog, anon      <!-- 登录相关不认证 -->
-                /register** = watchDog, anon   <!-- 注册相关不认证 -->
-                /reset_pwd** = watchDog, anon  <!-- 密码找回不认证 -->
+                /get_token** = watchDog, anon
                 /** = watchDog, auth
             </value>
         </property>

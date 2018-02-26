@@ -24,7 +24,7 @@ public class JsonBodyRequest extends HttpServletRequestWrapper {
     /* 请求体 */
     private byte[] body = new byte[]{};
     /* 参数Map */
-    private Map<String, Object> params;
+    private Map<String, Object> paramMap;
 
     public JsonBodyRequest(HttpServletRequest request) {
         super(request);
@@ -32,7 +32,7 @@ public class JsonBodyRequest extends HttpServletRequestWrapper {
         String bodyStr = HttpServlets.getBodyStr(request);
         if (!Strings.isNullOrEmpty(bodyStr)) {
             body = bodyStr.getBytes(Charset.forName("UTF-8"));
-            params = JsonUtil.fromJson(bodyStr);
+            paramMap = JsonUtil.fromJson(bodyStr);
         }
     }
 
@@ -54,6 +54,6 @@ public class JsonBodyRequest extends HttpServletRequestWrapper {
 
     @Override
     public Map<String, Object> getParameterMap() {
-        return params;
+        return paramMap;
     }
 }
