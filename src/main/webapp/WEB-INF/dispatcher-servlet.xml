@@ -13,24 +13,23 @@
     <!-- =================== -->
     <!--     映射处理器      -->
     <!-- =================== -->
-    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">-->
-    <!--</bean>-->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+    </bean>
     <!-- =================== -->
     <!--     处理器适配器    -->
     <!-- =================== -->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
             <list>
-                <ref bean="stringHttpMessage"/>
-                <ref bean="jsonHttpMessage"/>
-                <ref bean="xmlHttpMessage"/>
+                <!--<ref bean="stringMsgConverter"/>-->
+                <ref bean="jsonMsgConverter"/>
             </list>
         </property>
     </bean>
     <!-- =================== -->
     <!--         报文            -->
     <!-- =================== -->
-    <bean id="stringHttpMessage" class="org.springframework.http.converter.StringHttpMessageConverter">
+    <bean id="stringMsgConverter" class="org.springframework.http.converter.StringHttpMessageConverter">
         <constructor-arg value="UTF-8" index="0"/>
         <property name="supportedMediaTypes">
             <list>
@@ -38,40 +37,15 @@
             </list>
         </property>
     </bean>
-    <bean id="jsonHttpMessage" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+    <bean id="jsonMsgConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <property name="supportedMediaTypes">
             <list>
                 <value>text/html; charset=UTF-8</value>
-                <!--<value>text/plain;charset=UTF-8</value>-->
+                <value>text/plain;charset=UTF-8</value>
                 <value>application/json;charset=UTF-8</value>
             </list>
         </property>
     </bean>
-    <bean id="xmlHttpMessage" class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
-        <property name="marshaller" ref="xstreamMarshaller"/>
-        <property name="unmarshaller" ref="xstreamMarshaller"/>
-        <property name="supportedMediaTypes">
-            <list>
-                <value>text/xml;charset=UTF-8</value>
-                <value>application/xml;charset=UTF-8</value>
-            </list>
-        </property>
-    </bean>
-    <bean id="xstreamMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
-        <property name="autodetectAnnotations" value="true"/>
-        <property name="streamDriver">
-            <bean class="com.thoughtworks.xstream.io.xml.StaxDriver">
-                <constructor-arg>
-                    <bean class="com.thoughtworks.xstream.io.naming.NoNameCoder"/>
-                </constructor-arg>
-            </bean>
-        </property>
-        <!--<property name="aliases">-->
-        <!--<map>-->
-        <!--<entry key="xml" value="com.company.project.webapi.web.notify.wechat.NotifyParam"/>-->
-        <!--</map>-->
-        <!--</property>-->
-    </bean>
 
-    <bean class="com.company.project.webapi.support.context.SpringContext" />
+    <bean class="com.company.project.webapi.support.context.SpringContext"/>
 </beans>
