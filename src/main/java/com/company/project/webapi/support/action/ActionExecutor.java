@@ -40,7 +40,7 @@ public class ActionExecutor {
      */
     public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response,
                                               String name) {
-        Action action = SpringContext.getBean(name, Action.class);
+        Action action = SpringContext.getBean(name);
         if (action == null) {
             throw new IllegalStateException(String.format("action bean[%s] not exist!", name));
         }
