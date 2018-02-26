@@ -6,7 +6,7 @@
     <!-- ==================== -->
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.company.project.webapi</groupId>
-    <artifactId>web-api</artifactId>
+    <artifactId>study-web-api</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
     <!-- ==================== -->
