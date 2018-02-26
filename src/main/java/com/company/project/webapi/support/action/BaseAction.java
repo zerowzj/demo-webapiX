@@ -1,9 +1,9 @@
 package com.company.project.webapi.support.action;
 
-import com.company.project.webapi.support.web.Param;
-import com.company.project.webapi.support.web.Results;
 import com.company.project.webapi.support.context.RequestContext;
 import com.company.project.webapi.support.util.JsonUtil;
+import com.company.project.webapi.support.web.Param;
+import com.company.project.webapi.support.web.Results;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,9 +27,9 @@ public abstract class BaseAction implements Action {
         Map<String, Object> result;
         try {
             //参数
-            Map<String, Object> params = request.getParameterMap();
-            LOGGER.info("===> i: {}", JsonUtil.toJson(params));
-            Param param = new Param(params);
+            Map<String, Object> paramMap = request.getParameterMap();
+            LOGGER.info("===> i: {}", JsonUtil.toJson(paramMap));
+            Param param = new Param(paramMap);
             //上下文
             RequestContext cxt = new RequestContext(request, response);
             Integer ubId = param.get("ub_id");
@@ -53,8 +53,8 @@ public abstract class BaseAction implements Action {
     /**
      * 验证参数
      *
-     * @param cxt
-     * @param param
+     * @param cxt   - 请求上下文
+     * @param param - 参数
      */
     protected void checkData(RequestContext cxt, Param param) {
     }
@@ -62,8 +62,8 @@ public abstract class BaseAction implements Action {
     /**
      * 执行逻辑
      *
-     * @param cxt
-     * @param param
+     * @param cxt   - 请求上下文
+     * @param param - 参数
      * @return Map
      */
     protected abstract Map<String, Object> execute(RequestContext cxt, Param param);
