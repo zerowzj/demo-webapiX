@@ -40,14 +40,6 @@ public class Results {
         return build(code, desc, null);
     }
 
-    /**
-     * 构造结果
-     *
-     * @param code
-     * @param desc
-     * @param data
-     * @return Map
-     */
     private static Map<String, Object> build(String code, String desc, Map<String, Object> data) {
         Map<String, Object> result = Maps.newHashMap();
         result.put(KEY_CODE, code);
@@ -58,5 +50,14 @@ public class Results {
         result.put(KEY_DATA, data);
         //result.put(KEY_REQUEST_ID, TrackKey.get());
         return result;
+    }
+
+    /**
+     * 构造Data
+     *
+     * @return Map
+     */
+    public static Map<String, Object> data() {
+        return Maps.newHashMap();
     }
 }
