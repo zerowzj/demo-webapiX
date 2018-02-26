@@ -54,6 +54,6 @@ public class JsonBodyRequest extends HttpServletRequestWrapper {
 
     @Override
     public Map<String, Object> getParameterMap() {
-        return paramMap;
+        return this.paramMap;
     }
 }
