@@ -10,10 +10,10 @@ import java.util.Map;
 public class Param {
 
     /* 参数Map */
-    private Map<String, Object> param;
+    private Map<String, Object> paramMap;
 
-    public Param(Map<String, Object> param) {
-        this.param = param;
+    public Param(Map<String, Object> paramMap) {
+        this.paramMap = paramMap;
     }
 
     /**
@@ -23,6 +23,6 @@ public class Param {
      * @return T
      */
     public <T> T get(String paramName) {
-        return (T) param.get(paramName);
+        return (T) paramMap.get(paramName);
     }
 }
