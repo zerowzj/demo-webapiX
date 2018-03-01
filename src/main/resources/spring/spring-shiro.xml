@@ -68,7 +68,7 @@ URL_Ant_Path_Expression = Path_Specific_Filter_Chain
     <!-- ==================== -->
     <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
         <property name="sessionValidationSchedulerEnabled" value="false"/>
-        <property name="sessionIdCookieEnabled" value="false"/>
+        <!--<property name="sessionIdCookieEnabled" value="false"/>-->
         <!--<property name="sessionIdCookie" ref="simpleCookie"/>-->
     </bean>
     <bean id="simpleCookie" class="org.apache.shiro.web.servlet.SimpleCookie">

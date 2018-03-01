@@ -11,8 +11,8 @@ public class RedisClient {
 
     private static Pool<Jedis> POOL;
 
-    public static void t() {
-
+    public static void set(String key, String value) {
+        getJedis().set(key, value);
     }
 
     private static Jedis getJedis() {

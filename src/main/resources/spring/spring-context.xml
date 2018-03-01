@@ -16,8 +16,8 @@
     </bean>
     <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
         <constructor-arg index="0" ref="jedisPoolConfig"/>
-        <constructor-arg index="1" value="127.0.0.1"/>
-        <constructor-arg index="2" value="6379"/>
+        <constructor-arg index="1" value="${redis.server.hostname}"/>
+        <constructor-arg index="2" value="${redis.server.port}"/>
     </bean>
 
     <bean class="com.company.project.webapi.cache.RedisClient"/>
