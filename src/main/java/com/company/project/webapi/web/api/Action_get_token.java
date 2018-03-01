@@ -14,6 +14,7 @@ public class Action_get_token extends BaseAction {
     @Override
     protected Map<String, Object> execute(RequestContext cxt, Param param) {
 
+
         Map<String, Object> data = Results.data();
         data.put("ub_id", 666666);
         data.put("access_token", "0123456789");
