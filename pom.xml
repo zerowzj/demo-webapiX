@@ -245,6 +245,24 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.1.1</version>
+                <configuration>
+                    <webResources>
+                        <webResource></webResource>
+                    </webResources>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <port>8080</port>
+                    <path>/ROOT</path>
+                    <update>true</update>
+                    <url>http://47.93.194.39:8080/manager/text</url>
+                    <username>admin</username>
+                    <password>1281827908</password>
+                </configuration>
             </plugin>
         </plugins>
     </build>
