@@ -15,7 +15,7 @@ public class Action_get_token extends BaseAction {
     @Override
     protected Map<String, Object> execute(RequestContext cxt, Param param) {
 
-        RedisClient.set("mykey", "valuesdfsdflljsafdl");
+//        RedisClient.set("mykey", "valuesdfsdflljsafdl");
 
         Map<String, Object> data = Results.data();
         data.put("ub_id", 666666);
