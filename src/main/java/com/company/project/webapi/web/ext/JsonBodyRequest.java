@@ -1,7 +1,7 @@
 package com.company.project.webapi.web.ext;
 
-import com.company.project.webapi.support.util.HttpServlets;
-import com.company.project.webapi.support.util.JsonUtil;
+import com.company.project.webapi.common.util.HttpServlets;
+import com.company.project.webapi.common.util.JsonUtil;
 import com.google.common.base.Strings;
 
 import javax.servlet.ServletInputStream;

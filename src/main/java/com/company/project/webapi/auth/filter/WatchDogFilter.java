@@ -1,7 +1,6 @@
 package com.company.project.webapi.auth.filter;
 
-import com.company.project.webapi.auth.Uris;
-import com.company.project.webapi.support.util.HttpServlets;
+import com.company.project.webapi.common.util.HttpServlets;
 import com.company.project.webapi.web.ext.JsonBodyRequest;
 import com.google.common.base.Stopwatch;
 import com.google.common.base.Strings;

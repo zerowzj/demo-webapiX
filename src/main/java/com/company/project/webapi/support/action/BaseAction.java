@@ -1,7 +1,7 @@
 package com.company.project.webapi.support.action;
 
 import com.company.project.webapi.support.context.RequestContext;
-import com.company.project.webapi.support.util.JsonUtil;
+import com.company.project.webapi.common.util.JsonUtil;
 import com.company.project.webapi.support.web.Param;
 import com.company.project.webapi.support.web.Results;
 import org.slf4j.Logger;

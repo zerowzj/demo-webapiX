@@ -1,4 +1,4 @@
-package com.company.project.webapi.support.util;
+package com.company.project.webapi.common.util;
 
 import com.google.common.base.Objects;
 import com.google.common.io.Closeables;

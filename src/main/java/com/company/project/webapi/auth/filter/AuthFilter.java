@@ -1,6 +1,6 @@
 package com.company.project.webapi.auth.filter;
 
-import com.company.project.webapi.support.util.HttpServlets;
+import com.company.project.webapi.common.util.HttpServlets;
 import org.apache.shiro.web.servlet.AdviceFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

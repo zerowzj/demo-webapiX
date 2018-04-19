@@ -1,4 +1,4 @@
-package com.company.project.webapi.support.util;
+package com.company.project.webapi.common.util;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
