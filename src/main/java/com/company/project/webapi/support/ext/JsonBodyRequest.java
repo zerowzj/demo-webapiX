@@ -1,4 +1,4 @@
-package com.company.project.webapi.web.ext;
+package com.company.project.webapi.support.ext;
 
 import com.company.project.webapi.common.util.HttpServlets;
 import com.company.project.webapi.common.util.JsonUtil;
