@@ -7,7 +7,8 @@ import redis.clients.util.Pool;
 import javax.annotation.PostConstruct;
 
 /**
- * 静态变量/类变量不是对象的属性,而是一个类的属性,spring则是基于对象层面上的依赖注入。
+ * 静态变量/类变量不是对象的属性，
+ * 而是一个类的属性，spring则是基于对象层面上的依赖注入。
  *
  * @author wangzhj
  */
