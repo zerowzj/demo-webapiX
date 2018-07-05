@@ -5,7 +5,7 @@
     <!--       项目           -->
     <!-- ==================== -->
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.company.project.webapi</groupId>
+    <groupId>com.company.project</groupId>
     <artifactId>demo-webapi</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
@@ -219,7 +219,7 @@
     <!--       构建           -->
     <!-- ==================== -->
     <build>
-        <finalName>study-webapi</finalName>
+        <finalName>demo-webapi</finalName>
         <filters>
             <filter>src/main/filters/${env}.properties</filter>
         </filters>
@@ -270,11 +270,11 @@
                         <configuration>
                             <serverId>server_39</serverId>
                             <fromFile>target/</fromFile>
-                            <url>scp://47.93.194.39/app/study-webapi/webapps</url>
+                            <url>scp://47.93.194.39/app/demo-webapi/webapps</url>
                             <commands>
                                 <command>
                                     <![CDATA[
-                                    cd /app/study-webapi/webapps;
+                                    cd /app/demo-webapi/webapps;
                                     rm -rf ROOT;
                                     tar -zxf  -C ./ROOT
                                     ]]>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <property name="PROJECT_NAME" value="study-webapi"/>
+    <property name="PROJECT_NAME" value="demo-webapi"/>
     <property name="LOG_HOME" value="/app/logs/${PROJECT_NAME}"/>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -28,7 +28,7 @@
         </rollingPolicy>
     </appender>
 
-    <root level="${log.level}">
+    <root level="DEBUG">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </root>
