@@ -64,7 +64,6 @@
             <artifactId>spring-aop</artifactId>
             <version>${spring.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
@@ -75,16 +74,6 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>org.springframework</groupId>-->
-        <!--<artifactId>spring-orm</artifactId>-->
-        <!--<version>${spring.version}</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework</groupId>-->
-        <!--<artifactId>spring-aspects</artifactId>-->
-        <!--<version>${spring.version}</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
@@ -102,12 +91,12 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.12</version>
         </dependency>
-        <!-- Log4j -->
-        <dependency>
-            <artifactId>log4j</artifactId>
-            <groupId>log4j</groupId>
-            <version>1.2.17</version>
-        </dependency>
+        <!--&lt;!&ndash; Log4j &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<artifactId>log4j</artifactId>-->
+            <!--<groupId>log4j</groupId>-->
+            <!--<version>1.2.17</version>-->
+        <!--</dependency>-->
         <!-- Logback -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
