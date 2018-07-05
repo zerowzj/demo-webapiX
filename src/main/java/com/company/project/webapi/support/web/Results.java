@@ -45,7 +45,7 @@ public class Results {
         result.put(KEY_CODE, code);
         result.put(KEY_DESC, desc);
         if (data == null) {
-            data = Maps.newHashMap();
+            data = data();
         }
         result.put(KEY_DATA, data);
         //result.put(KEY_REQUEST_ID, TrackKey.get());

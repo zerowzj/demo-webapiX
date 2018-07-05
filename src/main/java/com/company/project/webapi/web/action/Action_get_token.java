@@ -1,4 +1,4 @@
-package com.company.project.webapi.web.api;
+package com.company.project.webapi.web.action;
 
 import com.company.project.webapi.cache.RedisClient;
 import com.company.project.webapi.support.action.BaseAction;
