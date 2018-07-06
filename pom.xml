@@ -215,13 +215,13 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-        <!--<extensions>-->
-            <!--<extension>-->
-                <!--<groupId>org.apache.maven.wagon</groupId>-->
-                <!--<artifactId>wagon-ssh</artifactId>-->
-                <!--<version>3.0.0</version>-->
-            <!--</extension>-->
-        <!--</extensions>-->
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ssh</artifactId>
+                <version>2.8</version>
+            </extension>
+        </extensions>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -248,7 +248,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>wagon-maven-plugin</artifactId>
-                <version>2.0.0</version>
+                <version>1.0</version>
                 <executions>
                     <execution>
                         <id>upload-sshexec</id>
@@ -271,7 +271,12 @@
                                         rm -rf ${war}
                                     ]]>
                                 </command>
-                                <command><![CDATA[ /app/demo-webapi/bin/start-webapi.sh ]]></command>
+                                <command>
+                                    <![CDATA[
+                                        cd /app/demo-webapi/bin;
+                                        sh start-webapi.sh
+                                    ]]>
+                                </command>
                             </commands>
                             <displayCommandOutputs>true</displayCommandOutputs>
                         </configuration>
