@@ -220,7 +220,7 @@
             <extension>
                 <groupId>org.apache.maven.wagon</groupId>
                 <artifactId>wagon-ssh</artifactId>
-                <version>2.8</version>
+                <version>2.10</version>
             </extension>
         </extensions>
         <plugins>
@@ -264,11 +264,12 @@
                             <url>scp://47.93.194.39/app/demo-webapi/webapps</url>
                             <commands>
                                 <command>
-                                    <![CDATA[ cd /app/demo-webapi/webapps
-                                            rm -rf ROOT
-                                            unzip -oq ${war} -d ./ROOT
-                                            rm -rf ${war}
-                                            sh /app/demo-webapi/bin/start-webapi.sh
+                                    <![CDATA[
+                                        cd /app/demo-webapi/webapps
+                                        rm -rf ROOT
+                                        unzip -oq ${war} -d ./ROOT
+                                        rm -rf ${war}
+                                        /app/demo-webapi/bin/start-webapi.sh
                                     ]]>
                                 </command>
                             </commands>

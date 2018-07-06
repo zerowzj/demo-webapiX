@@ -22,7 +22,7 @@ public class RedisClient {
     //通过中间变量赋值
     @PostConstruct
     public void init() {
-        POOL = pool;
+//        POOL = pool;
     }
 
     public static void set(String key, String value) {
