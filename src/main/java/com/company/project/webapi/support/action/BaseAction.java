@@ -1,7 +1,7 @@
 package com.company.project.webapi.support.action;
 
-import com.company.project.webapi.support.context.RequestContext;
 import com.company.project.webapi.common.util.JsonUtil;
+import com.company.project.webapi.support.context.RequestContext;
 import com.company.project.webapi.support.web.Param;
 import com.company.project.webapi.support.web.Results;
 import org.slf4j.Logger;
@@ -22,8 +22,7 @@ public abstract class BaseAction implements Action {
     protected static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     @Override
-    public final Map<String, Object> doExecute(HttpServletRequest request,
-                                               HttpServletResponse response) {
+    public final Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> result;
         try {
             //参数
@@ -39,9 +38,9 @@ public abstract class BaseAction implements Action {
                 cxt.setAccessToken(accessToken);
             }
             //==>
-            checkData(cxt, param);
+            checkInput(cxt, param);
             //==>
-            Map<String, Object> data = execute(cxt, param);
+            Map<String, Object> data = processBusiness(cxt, param);
             result = Results.ok(data);
             LOGGER.info("===> o: {}", JsonUtil.toJson(result));
         } catch (Exception ex) {
@@ -51,20 +50,20 @@ public abstract class BaseAction implements Action {
     }
 
     /**
-     * 验证参数
+     * 验证输入
      *
-     * @param cxt   - 请求上下文
-     * @param param - 参数
+     * @param cxt   请求上下文
+     * @param param 参数
      */
-    protected void checkData(RequestContext cxt, Param param) {
+    protected void checkInput(RequestContext cxt, Param param) {
     }
 
     /**
-     * 执行逻辑
+     * 处理业务
      *
-     * @param cxt   - 请求上下文
-     * @param param - 参数
+     * @param cxt   请求上下文
+     * @param param 参数
      * @return Map
      */
-    protected abstract Map<String, Object> execute(RequestContext cxt, Param param);
+    protected abstract Map<String, Object> processBusiness(RequestContext cxt, Param param);
 }

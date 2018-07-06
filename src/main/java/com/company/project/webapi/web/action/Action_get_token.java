@@ -12,7 +12,7 @@ import java.util.Map;
 public class Action_get_token extends BaseAction {
 
     @Override
-    protected Map<String, Object> execute(RequestContext cxt, Param param) {
+    protected Map<String, Object> processBusiness(RequestContext cxt, Param param) {
 
 //        RedisClient.set("mykey", "valuesdfsdflljsafdl");
 

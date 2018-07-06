@@ -14,8 +14,8 @@ public interface Action {
     /**
      * 执行
      *
-     * @param request  - Http请求
-     * @param response - Http响应
+     * @param request  Http请求
+     * @param response Http响应
      * @return Map
      */
     Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response);
