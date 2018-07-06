@@ -20,5 +20,5 @@
         <constructor-arg index="2" value="${redis.server.port}"/>
     </bean>
 
-    <bean class="com.company.project.webapi.cache.RedisClient"/>
+    <bean class="com.company.project.webapi.common.RedisClient"/>
 </beans>

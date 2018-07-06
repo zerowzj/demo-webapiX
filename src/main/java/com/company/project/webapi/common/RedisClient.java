@@ -1,4 +1,4 @@
-package com.company.project.webapi.cache;
+package com.company.project.webapi.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.Jedis;

@@ -1,6 +1,5 @@
 package com.company.project.webapi.web.action;
 
-import com.company.project.webapi.cache.RedisClient;
 import com.company.project.webapi.support.action.BaseAction;
 import com.company.project.webapi.support.context.RequestContext;
 import com.company.project.webapi.support.web.Param;
