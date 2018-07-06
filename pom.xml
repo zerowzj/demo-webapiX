@@ -94,16 +94,6 @@
             <version>1.7.12</version>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.12</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.12</version>
-        </dependency>
-        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
@@ -281,7 +271,7 @@
                                         rm -rf ${war}
                                     ]]>
                                 </command>
-                                <!--<command> <![CDATA[ sh /app/demo-webapi/bin/start-webapi.sh ]]></command>-->
+                                <!--<command><![CDATA[ /app/demo-webapi/bin/start-webapi.sh ]]></command>-->
                             </commands>
                             <displayCommandOutputs>true</displayCommandOutputs>
                         </configuration>
