@@ -268,9 +268,8 @@
                                             rm -rf ROOT
                                             unzip -oq ${war} -d ./ROOT
                                             rm -rf ${war}
-                                            cd /app/demo-webapi/bin
-                                            ./start-webapi.sh
-                                            ]]>
+                                            sh /app/demo-webapi/bin/start-webapi.sh
+                                    ]]>
                                 </command>
                             </commands>
                             <displayCommandOutputs>true</displayCommandOutputs>
