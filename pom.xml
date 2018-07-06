@@ -214,6 +214,13 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+        <!--<extensions>-->
+            <!--<extension>-->
+                <!--<groupId>org.apache.maven.wagon</groupId>-->
+                <!--<artifactId>wagon-ssh</artifactId>-->
+                <!--<version>2.8</version>-->
+            <!--</extension>-->
+        <!--</extensions>-->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -237,7 +244,34 @@
                     <skipTests>true</skipTests>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>wagon-maven-plugin</artifactId>
+                <version>2.0.0</version>
+                <executions>
+                    <execution>
+                        <id>upload-sshexec</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>upload-single</goal>
+                            <goal>sshexec</goal>
+                        </goals>
+                        <configuration>
+                            <serverId>server_39</serverId>
+                            <fromFile>target/demo-webapi.war</fromFile>
+                            <url>scp://47.93.194.39/app/demo-webapi/webapps</url>
+                            <commands>
+                                <command>
+                                    <![CDATA[ cd /app/demo-webapi/webapps;
+                                            rm -rf ROOT;
+                                            tar -zxf demo-webapi.war -C ./ROOT ]]>
+                                </command>
+                            </commands>
+                            <displayCommandOutputs>true</displayCommandOutputs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <!-- ==================== -->
@@ -252,38 +286,38 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>wagon-maven-plugin</artifactId>
-                        <version>2.0.0</version>
-                        <executions>
-                            <execution>
-                                <id>upload-sshexec</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>upload-single</goal>
-                                    <goal>sshexec</goal>
-                                </goals>
-                                <configuration>
-                                    <serverId>server_39</serverId>
-                                    <fromFile>target/</fromFile>
-                                    <url>scp://47.93.194.39/app/demo-webapi/webapps</url>
-                                    <commands>
-                                        <command>
-                                            <![CDATA[ cd /app/demo-webapi/webapps;
-                                            rm -rf ROOT;
-                                            tar -zxf  -C ./ROOT ]]>
-                                        </command>
-                                    </commands>
-                                    <displayCommandOutputs>true</displayCommandOutputs>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
+            <!--<build>-->
+                <!--<plugins>-->
+                    <!--<plugin>-->
+                        <!--<groupId>org.codehaus.mojo</groupId>-->
+                        <!--<artifactId>wagon-maven-plugin</artifactId>-->
+                        <!--<version>2.0.0</version>-->
+                        <!--<executions>-->
+                            <!--<execution>-->
+                                <!--<id>upload-sshexec</id>-->
+                                <!--<phase>package</phase>-->
+                                <!--<goals>-->
+                                    <!--<goal>upload-single</goal>-->
+                                    <!--<goal>sshexec</goal>-->
+                                <!--</goals>-->
+                                <!--<configuration>-->
+                                    <!--<serverId>server_39</serverId>-->
+                                    <!--<fromFile>target/</fromFile>-->
+                                    <!--<url>scp://47.93.194.39/app/demo-webapi/webapps</url>-->
+                                    <!--<commands>-->
+                                        <!--<command>-->
+                                            <!--<![CDATA[ cd /app/demo-webapi/webapps;-->
+                                            <!--rm -rf ROOT;-->
+                                            <!--tar -zxf  -C ./ROOT ]]>-->
+                                        <!--</command>-->
+                                    <!--</commands>-->
+                                    <!--<displayCommandOutputs>true</displayCommandOutputs>-->
+                                <!--</configuration>-->
+                            <!--</execution>-->
+                        <!--</executions>-->
+                    <!--</plugin>-->
+                <!--</plugins>-->
+            <!--</build>-->
         </profile>
         <profile>
             <id>test</id>
