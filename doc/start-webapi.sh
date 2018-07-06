@@ -2,7 +2,7 @@
 
 PROJECT_NAME=demo-webapi
 
-pid=`ps -ef |grep $PROJECT_NAME |grep -v grep |awk '{print $2}'`
+pid=`ps -ef |grep demo-webapi |grep -v grep |awk '{print $2}'`
 
 if [ -n "$pid" ]; then
     kill -9 $pid
@@ -11,6 +11,6 @@ if [ -n "$pid" ]; then
     echo "------------------------------"
 fi
 
-sh startup.sh
+#sh startup.sh
 
 

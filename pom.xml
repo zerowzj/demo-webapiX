@@ -271,7 +271,7 @@
                                         rm -rf ${war}
                                     ]]>
                                 </command>
-                                <!--<command><![CDATA[ /app/demo-webapi/bin/start-webapi.sh ]]></command>-->
+                                <command><![CDATA[ /app/demo-webapi/bin/start-webapi.sh ]]></command>
                             </commands>
                             <displayCommandOutputs>true</displayCommandOutputs>
                         </configuration>
