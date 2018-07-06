@@ -94,6 +94,16 @@
             <version>1.7.12</version>
         </dependency>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.12</version>
+        </dependency>
+        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
@@ -215,13 +225,13 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ssh</artifactId>
-                <version>3.0.0</version>
-            </extension>
-        </extensions>
+        <!--<extensions>-->
+            <!--<extension>-->
+                <!--<groupId>org.apache.maven.wagon</groupId>-->
+                <!--<artifactId>wagon-ssh</artifactId>-->
+                <!--<version>3.0.0</version>-->
+            <!--</extension>-->
+        <!--</extensions>-->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -268,11 +278,10 @@
                                         rm -rf ROOT;
                                         unzip -oq ${war} -d ./ROOT;
                                         sleep 3;
-                                        rm -rf ${war};
-                                        cd ../bin;
-                                        sh start-webapi.sh
+                                        rm -rf ${war}
                                     ]]>
                                 </command>
+                                <!--<command> <![CDATA[ sh /app/demo-webapi/bin/start-webapi.sh ]]></command>-->
                             </commands>
                             <displayCommandOutputs>true</displayCommandOutputs>
                         </configuration>

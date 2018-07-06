@@ -1,7 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
 PROJECT_NAME=demo-webapi
-DEPLOY_HOME=/app/demo-webapi
 
 pid=`ps -ef |grep $PROJECT_NAME |grep -v grep |awk '{print $2}'`
 
@@ -12,7 +11,6 @@ if [ -n "$pid" ]; then
     echo "------------------------------"
 fi
 
-cd $DEPLOY_HOME/bin
 sh startup.sh
 
 
