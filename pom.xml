@@ -85,19 +85,13 @@
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
         <!-- Slf4j -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.12</version>
         </dependency>
-        <!--&lt;!&ndash; Log4j &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<artifactId>log4j</artifactId>-->
-            <!--<groupId>log4j</groupId>-->
-            <!--<version>1.2.17</version>-->
-        <!--</dependency>-->
-        <!-- Logback -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -142,7 +136,6 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-smile</artifactId>
