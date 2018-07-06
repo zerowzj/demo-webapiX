@@ -22,7 +22,7 @@ public abstract class BaseAction implements Action {
     protected static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     @Override
-    public final Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response) {
+    public final Map<String, Object> doProcess(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> result;
         try {
             //参数

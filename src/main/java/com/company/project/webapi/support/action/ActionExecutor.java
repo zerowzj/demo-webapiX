@@ -27,7 +27,7 @@ public class ActionExecutor {
         if (action == null) {
             throw new IllegalStateException(String.format("action bean[%s] not exist!", clazz.getSimpleName()));
         }
-        return action.doExecute(request, response);
+        return action.doProcess(request, response);
     }
 
     /**
@@ -44,6 +44,6 @@ public class ActionExecutor {
         if (action == null) {
             throw new IllegalStateException(String.format("action bean[%s] not exist!", name));
         }
-        return action.doExecute(request, response);
+        return action.doProcess(request, response);
     }
 }

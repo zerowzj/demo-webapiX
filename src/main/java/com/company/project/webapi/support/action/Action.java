@@ -12,11 +12,11 @@ import java.util.Map;
 public interface Action {
 
     /**
-     * 执行
+     * 处理
      *
      * @param request  Http请求
      * @param response Http响应
      * @return Map
      */
-    Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response);
+    Map<String, Object> doProcess(HttpServletRequest request, HttpServletResponse response);
 }
