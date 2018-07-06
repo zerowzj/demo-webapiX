@@ -16,9 +16,9 @@ public class ActionExecutor {
     /**
      * 执行Action
      *
-     * @param request  - Http请求
-     * @param response - Http响应
-     * @param clazz    - 执行类
+     * @param request  Http请求
+     * @param response Http响应
+     * @param clazz    执行类
      * @return Map
      */
     public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response,
@@ -33,9 +33,9 @@ public class ActionExecutor {
     /**
      * 执行Action
      *
-     * @param request  - Http请求
-     * @param response - Http响应
-     * @param name     - 执行类名称
+     * @param request  Http请求
+     * @param response Http响应
+     * @param name     执行类名称
      * @return Map
      */
     public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response,
