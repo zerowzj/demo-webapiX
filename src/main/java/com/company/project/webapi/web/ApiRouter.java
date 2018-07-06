@@ -21,6 +21,8 @@ public class ApiRouter {
     private static final String ACTION_PREFIX = "action";
 
     /**
+     * 路由
+     *
      * @param module   模块
      * @param action   动作
      * @param request  Http请求
@@ -35,6 +37,8 @@ public class ApiRouter {
     }
 
     /**
+     * 路由
+     *
      * @param action   动作
      * @param request  Http请求
      * @param response Http响应
