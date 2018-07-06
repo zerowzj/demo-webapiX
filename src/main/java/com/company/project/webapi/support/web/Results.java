@@ -20,7 +20,7 @@ public class Results {
     private static final String KEY_REQUEST_ID = "request_id";
 
     /**
-     * 构造成功结果
+     * 成功结果
      *
      * @param data
      * @return Map
@@ -30,7 +30,7 @@ public class Results {
     }
 
     /**
-     * 构造失败结果
+     * 错误结果
      *
      * @param code
      * @param desc
@@ -53,7 +53,7 @@ public class Results {
     }
 
     /**
-     * 构造Data
+     * Data Map
      *
      * @return Map
      */
