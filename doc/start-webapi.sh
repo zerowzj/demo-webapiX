@@ -1,12 +1,18 @@
 #!/bin/sh
 
-DEPLOY_HOME=/app/demp-webapi
+PROJECT_NAME=demo-webapi
+DEPLOY_HOME=/app/demo-webapi
 
+cd `dirname $0`
 
-PID=`ps -ef |grep demo-webapi |grep -v grep |awk {}`
+pid=`ps -ef |grep $PROJECT_NAME |grep -v grep |awk '{print $2}'`
 
+if [ -n "$pid" ]; then
+ kill -9 $pid
+ echo "shutdown tomcat..."
+fi
 
-cd DEPLOY_HOME/bin
-sh start.sh
+cd $DEPLOY_HOME/bin
+sh startup.sh
 
 
