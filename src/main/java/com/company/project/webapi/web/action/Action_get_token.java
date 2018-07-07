@@ -2,8 +2,8 @@ package com.company.project.webapi.web.action;
 
 import com.company.project.webapi.support.action.BaseAction;
 import com.company.project.webapi.support.context.RequestContext;
-import com.company.project.webapi.support.web.Param;
-import com.company.project.webapi.support.web.Results;
+import com.company.project.webapi.support.Param;
+import com.company.project.webapi.support.Results;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;

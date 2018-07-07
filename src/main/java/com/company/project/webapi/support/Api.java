@@ -1,4 +1,4 @@
-package com.company.project.webapi.support.web;
+package com.company.project.webapi.support;
 
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.http.MediaType;
