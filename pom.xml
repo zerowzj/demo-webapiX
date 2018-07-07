@@ -207,7 +207,7 @@
         </filters>
         <resources>
             <resource>
-                <directory>src/main/profiles/${env}.properties</directory>
+                <directory>src/main/profiles/${env}</directory>
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
