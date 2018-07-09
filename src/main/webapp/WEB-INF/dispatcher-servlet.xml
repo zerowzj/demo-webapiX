@@ -12,7 +12,7 @@
     <context:component-scan base-package="com.company.project.webapi" use-default-filters="true">
     </context:component-scan>
 
-    <mvc:annotation-driven/>
+    <!--<mvc:annotation-driven/>-->
     <!-- =================== -->
     <!--     映射处理器      -->
     <!-- =================== -->
