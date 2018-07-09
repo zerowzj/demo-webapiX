@@ -21,6 +21,9 @@ public class AuthFilter extends AdviceFilter {
 
     @Override
     protected boolean preHandle(ServletRequest servletRequest, ServletResponse servletResponse) throws Exception {
+
+        LOGGER.info("I am AuthFilter!");
+
         HttpServletRequest request = HttpServlets.toHttp(servletRequest);
 //        Map<String, Object> paramMap = request.getParameterMap();
         try {

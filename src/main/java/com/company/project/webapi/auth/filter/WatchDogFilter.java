@@ -34,6 +34,9 @@ public class WatchDogFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(ServletRequest servletRequest, ServletResponse servletResponse,
                                     FilterChain filterChain) throws ServletException, IOException {
+
+        LOGGER.info("I am WatchDogFilter!");
+
         //计时
         Stopwatch stopwatch = Stopwatch.createStarted();
         //
