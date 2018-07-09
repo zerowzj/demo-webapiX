@@ -290,7 +290,7 @@
                                                 unzip -oq ../${war} -d ./ROOT;
                                                 sleep 3;
                                                 rm -rf ${war}
-                                           ]]>
+                                            ]]>
                                         </command>
                                         <command>
                                             <![CDATA[
