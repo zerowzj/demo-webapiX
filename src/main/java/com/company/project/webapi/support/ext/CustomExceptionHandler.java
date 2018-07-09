@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +17,7 @@ import java.util.Map;
  *
  * @author wangzhj
  */
-//@EnableWebMvc
+@EnableWebMvc
 @ControllerAdvice
 public class CustomExceptionHandler {
 
@@ -26,6 +27,8 @@ public class CustomExceptionHandler {
     @ResponseBody
     public Map<String, Object> resolveException(HttpServletRequest request, HttpServletResponse response,
                                                 Exception ex) {
+        LOGGER.info("erorrrrrrrrrrrrrrrrrrrrr");
+
         ex.printStackTrace();
         LOGGER.error("发生异常", ex);
         return Results.error("9999", "系统异常");
