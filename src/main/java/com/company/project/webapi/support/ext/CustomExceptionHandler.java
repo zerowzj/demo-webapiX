@@ -17,7 +17,7 @@ import java.util.Map;
  *
  * @author wangzhj
  */
-@EnableWebMvc
+//@EnableWebMvc
 @ControllerAdvice
 public class CustomExceptionHandler {
 
