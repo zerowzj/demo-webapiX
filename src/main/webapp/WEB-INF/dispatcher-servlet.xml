@@ -7,7 +7,7 @@
     <!-- =================== -->
     <!--      扫描Bean       -->
     <!-- =================== -->
-    <context:component-scan base-package="com.company.project.webapi">
+    <context:component-scan base-package="com.company.project.webapi.support; com.company.project.webapi.web">
     </context:component-scan>
     <!--<mvc:annotation-driven />-->
     <!-- =================== -->
