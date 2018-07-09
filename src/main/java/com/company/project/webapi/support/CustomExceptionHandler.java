@@ -1,4 +1,4 @@
-package com.company.project.webapi.web;
+package com.company.project.webapi.support;
 
 import com.company.project.webapi.support.web.Results;
 import org.slf4j.Logger;
@@ -22,7 +22,7 @@ public class CustomExceptionHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomExceptionHandler.class);
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(Throwable.class)
     @ResponseBody
     public Map<String, Object> resolveException(HttpServletRequest request, HttpServletResponse response,
                                                 Exception ex) {

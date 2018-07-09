@@ -22,7 +22,7 @@ public class AuthFilter extends AdviceFilter {
     @Override
     protected boolean preHandle(ServletRequest servletRequest, ServletResponse servletResponse) throws Exception {
         HttpServletRequest request = HttpServlets.toHttp(servletRequest);
-        Map<String, Object> paramMap = request.getParameterMap();
+//        Map<String, Object> paramMap = request.getParameterMap();
         try {
 
 
