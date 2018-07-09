@@ -12,6 +12,11 @@ public class HttpWrites {
             out.write(msg);
         } catch (Exception ex) {
             ex.printStackTrace();
+        } finally {
+            if(out != null){
+
+            }
+            out.close();
         }
     }
 }
