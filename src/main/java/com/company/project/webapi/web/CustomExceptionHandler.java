@@ -22,7 +22,7 @@ public class CustomExceptionHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomExceptionHandler.class);
 
-    @ExceptionHandler(Throwable.class)
+    @ExceptionHandler(Exception.class)
     @ResponseBody
     public Map<String, Object> resolveException(HttpServletRequest request, HttpServletResponse response,
                                                 Exception ex) {
