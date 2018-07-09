@@ -1,4 +1,4 @@
-package com.company.project.webapi.support.ext;
+package com.company.project.webapi.support;
 
 import com.company.project.webapi.support.web.Results;
 import org.slf4j.Logger;
@@ -28,8 +28,7 @@ public class CustomExceptionHandler {
     public Map<String, Object> resolveException(HttpServletRequest request, HttpServletResponse response,
                                                 Exception ex) {
         LOGGER.info("erorrrrrrrrrrrrrrrrrrrrr");
-
-        ex.printStackTrace();
+//        ex.printStackTrace();
         LOGGER.error("发生异常", ex);
         return Results.error("9999", "系统异常");
     }
