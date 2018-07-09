@@ -1,5 +1,6 @@
 package com.company.project.webapi.auth.filter;
 
+import com.company.project.webapi.auth.TrackKeys;
 import com.company.project.webapi.common.util.HttpServlets;
 import com.company.project.webapi.support.ext.JsonBodyRequest;
 import com.google.common.base.Stopwatch;
@@ -46,6 +47,7 @@ public class WatchDogFilter extends OncePerRequestFilter {
         try {
             //Request Id
             String requestId = request.getHeader(NAME_REQUEST_ID);
+            TrackKeys.set(requestId);
             if (Strings.isNullOrEmpty(requestId)) {
                 requestId = "1234567890";
                 //LOGGER.warn("URI[{}]使用自动生成的request_id[{}]！", uri, requestId);
@@ -67,6 +69,7 @@ public class WatchDogFilter extends OncePerRequestFilter {
         } finally {
             LOGGER.info("===> URI[{}] cost [{} ms]", uri, stopwatch.elapsed(TimeUnit.MILLISECONDS));
             MDC.clear();
+            TrackKeys.clear();
         }
     }
 }
