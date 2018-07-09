@@ -69,7 +69,7 @@ public class WatchDogFilter extends OncePerRequestFilter {
         } finally {
             LOGGER.info("===> URI[{}] cost [{} ms]", uri, stopwatch.elapsed(TimeUnit.MILLISECONDS));
             MDC.clear();
-            TrackKeys.clear();
+            TrackKeys.remove();
         }
     }
 }
