@@ -15,9 +15,6 @@ import java.util.Map;
  *
  * @author wangzhj
  */
-
-//@RestController
-//@RequestMapping("/api")
 @Api
 public class ApiRouter {
 
