@@ -29,7 +29,7 @@ URL_Ant_Path_Expression = Path_Specific_Filter_Chain
         </property>
         <property name="filterChainDefinitions">
             <value>
-                /get_token** = watchDog, anon
+                /api/get_token** = watchDog, anon
                 /** = watchDog, auth
             </value>
         </property>
