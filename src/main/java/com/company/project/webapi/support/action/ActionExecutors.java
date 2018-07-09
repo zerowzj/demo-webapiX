@@ -11,7 +11,7 @@ import java.util.Map;
  *
  * @author wangzhj
  */
-public class ActionExecutor {
+public class ActionExecutors {
 
     /**
      * 执行Action

@@ -25,9 +25,8 @@ public class AuthFilter extends AdviceFilter {
         LOGGER.info("I am AuthFilter!");
 
         HttpServletRequest request = HttpServlets.toHttp(servletRequest);
-//        Map<String, Object> paramMap = request.getParameterMap();
+        Map<String, Object> paramMap = request.getParameterMap();
         try {
-
 
         } catch (Exception ex) {
             throw ex;

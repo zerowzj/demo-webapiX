@@ -1,6 +1,6 @@
 package com.company.project.webapi.web;
 
-import com.company.project.webapi.support.action.ActionExecutor;
+import com.company.project.webapi.support.action.ActionExecutors;
 import com.company.project.webapi.support.web.Api;
 import com.google.common.base.Joiner;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,7 +33,7 @@ public class ApiRouter {
     public Map<String, Object> routeByModule(@PathVariable String module, @PathVariable String action,
                                              HttpServletRequest request, HttpServletResponse response) {
         String actionName = Joiner.on("_").join(ACTION_PREFIX, module, action);
-        return ActionExecutor.execute(request, response, actionName);
+        return ActionExecutors.execute(request, response, actionName);
     }
 
     /**
@@ -48,6 +48,6 @@ public class ApiRouter {
     public Map<String, Object> route(@PathVariable String action,
                                      HttpServletRequest request, HttpServletResponse response) throws Exception {
         String actionName = Joiner.on("_").join(ACTION_PREFIX, action);
-        return ActionExecutor.execute(request, response, actionName);
+        return ActionExecutors.execute(request, response, actionName);
     }
 }
