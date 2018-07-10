@@ -6,14 +6,14 @@ ROOT=$WEB_APPS/ROOT
 
 WAR_FILE=$DEPLOY_HOME/$1
 if [ ! -f "$WAR_FILE" ]; then
-    echo "ERROR: file [$WAR_FILE] not exists"
+    echo "ERROR: file [$WAR_FILE] not exist!"
     exit 1
 fi
 
 rm -rf $ROOT
-unzip -o $WAR_FILE -d $ROOT
-sleep 2
-rm -f $WAR_FILE
+unzip -oq $WAR_FILE -d $ROOT
+sleep 3
+rm -rf $WAR_FILE
 
 export JAVA_HOME=/usr/jdk1.8.0_162
 export PATH=$PATH:$JAVA_HOME/bin
