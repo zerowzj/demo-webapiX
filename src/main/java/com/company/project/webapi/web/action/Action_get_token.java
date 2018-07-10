@@ -15,7 +15,7 @@ public class Action_get_token extends BaseAction {
     protected Map<String, Object> processBusiness(RequestContext cxt, Param param) {
 
 //        RedisClient.set("mykey", "valuesdfsdflljsafdl");
-        if("1".equals("")){
+        if("".equals("")){
             throw new IllegalArgumentException("ssssssssss");
         }
         Map<String, Object> data = Results.data();
