@@ -283,7 +283,7 @@
                                     <fromFile>target/${war}</fromFile>
                                     <url>scp://47.93.194.39/app/demo-webapi</url>
                                     <commands>
-                                        <command><![CDATA[cd /app/demo-webapi/bin; sh deploy-webapi.sh]]></command>
+                                        <command><![CDATA[cd /app/demo-webapi/bin; sh deploy-webapi.sh ${war}]]></command>
                                     </commands>
                                     <displayCommandOutputs>true</displayCommandOutputs>
                                 </configuration>

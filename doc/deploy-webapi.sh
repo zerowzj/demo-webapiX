@@ -18,7 +18,7 @@ rm -rf $WAR_FILE
 export JAVA_HOME=/usr/jdk1.8.0_162
 export PATH=$PATH:$JAVA_HOME/bin
 
-pid=`ps -ef |grep $DEPLOY_HOME |grep -v grep |grep -v $0 |awk '{print $2}'`
+pid=`ps -ef |grep $DEPLOY_HOME/ |grep -v grep |grep -v $0 |awk '{print $2}'`
 if [ -n "$pid" ]; then
     kill -9 $pid
     echo "------------------------------"
@@ -26,5 +26,3 @@ if [ -n "$pid" ]; then
     echo "------------------------------"
 fi
 sh ./startup.sh
-
-
