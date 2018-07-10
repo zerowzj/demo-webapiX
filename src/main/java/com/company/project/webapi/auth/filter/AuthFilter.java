@@ -1,6 +1,7 @@
 package com.company.project.webapi.auth.filter;
 
 import com.company.project.webapi.common.util.HttpServlets;
+import com.company.project.webapi.common.util.HttpWrites;
 import org.apache.shiro.web.servlet.AdviceFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
@@ -25,9 +27,14 @@ public class AuthFilter extends AdviceFilter {
         LOGGER.info("I am AuthFilter!");
 
         HttpServletRequest request = HttpServlets.toHttp(servletRequest);
+        HttpServletResponse response = HttpServlets.toHttp(servletResponse);
         Map<String, Object> paramMap = request.getParameterMap();
         try {
-
+            //token过期或失效
+            if ("".equals("")) {
+                HttpWrites.write(response, "");
+                return false;
+            }
         } catch (Exception ex) {
             throw ex;
         }
