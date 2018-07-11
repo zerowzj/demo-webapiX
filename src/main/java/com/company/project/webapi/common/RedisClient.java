@@ -19,7 +19,7 @@ public class RedisClient {
 
     private static Pool<Jedis> POOL;
 
-    //通过中间变量赋值
+    //TODO 通过中间变量赋值
     @PostConstruct
     public void init() {
         POOL = pool;
@@ -40,7 +40,7 @@ public class RedisClient {
         return POOL.getResource();
     }
 
-    //spring支持set方法注入，利用非静态setter 方法注入静态变量
+    //TODO 利用非静态setter 方法注入静态变量
 //    @Autowired
 //    public void setPool(Pool<Jedis> pool) {
 //        POOL = pool;
