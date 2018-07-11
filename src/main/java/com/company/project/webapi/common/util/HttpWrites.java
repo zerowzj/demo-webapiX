@@ -1,12 +1,19 @@
 package com.company.project.webapi.common.util;
 
-import com.google.common.io.Closeables;
-
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 
+/**
+ * Http Write
+ *
+ * @author wangzhj
+ */
 public class HttpWrites {
 
+    /**
+     * @param response
+     * @param msg
+     */
     public static void write(HttpServletResponse response, String msg) {
         PrintWriter out = null;
         try {
@@ -15,7 +22,9 @@ public class HttpWrites {
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
-            out.close();
+            if (out != null) {
+                out.close();
+            }
         }
     }
 }
