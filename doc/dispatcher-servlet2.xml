@@ -24,10 +24,10 @@
     <!-- =================== -->
     <!--       拦截器        -->
     <!-- =================== -->
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/"/>
-            <ref bean="httpServletRequest"/>
-        </mvc:interceptor>
-    </mvc:interceptors>
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/"/>-->
+            <!--<ref bean="httpServletRequest"/>-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
 </beans>
