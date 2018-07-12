@@ -11,37 +11,44 @@
     <!-- =================== -->
     <context:component-scan base-package="com.company.project.webapi" use-default-filters="true">
     </context:component-scan>
+
+    <!--<mvc:annotation-driven/>-->
     <!-- =================== -->
-    <!--      注解驱动        -->
+    <!--     映射处理器      -->
     <!-- =================== -->
-    <mvc:annotation-driven>
-        <mvc:message-converters>
-            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
-                <constructor-arg value="UTF-8" index="0"/>
-                <property name="supportedMediaTypes">
-                    <list>
-                        <value>text/plain;charset=UTF-8</value>
-                    </list>
-                </property>
-            </bean>
-            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-                <property name="supportedMediaTypes">
-                    <list>
-                        <value>text/html; charset=UTF-8</value>
-                        <value>text/plain;charset=UTF-8</value>
-                        <value>application/json;charset=UTF-8</value>
-                    </list>
-                </property>
-            </bean>
-        </mvc:message-converters>
-    </mvc:annotation-driven>
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+    </bean>
     <!-- =================== -->
-    <!--       拦截器        -->
+    <!--     处理器适配器     -->
     <!-- =================== -->
-    <!--<mvc:interceptors>-->
-    <!--<mvc:interceptor>-->
-    <!--<mvc:mapping path="/"/>-->
-    <!--<ref bean="httpServletRequest"/>-->
-    <!--</mvc:interceptor>-->
-    <!--</mvc:interceptors>-->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <!--<ref bean="stringMsgConverter"/>-->
+                <ref bean="jsonMsgConverter"/>
+            </list>
+        </property>
+    </bean>
+    <!-- =================== -->
+    <!--      报文转换器      -->
+    <!-- =================== -->
+    <bean id="stringMsgConverter" class="org.springframework.http.converter.StringHttpMessageConverter">
+        <constructor-arg value="UTF-8" index="0"/>
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/plain;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="jsonMsgConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html; charset=UTF-8</value>
+                <value>text/plain;charset=UTF-8</value>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="com.company.project.webapi.support.context.SpringContext"/>
 </beans>
