@@ -11,8 +11,6 @@
     <!-- =================== -->
     <context:component-scan base-package="com.company.project.webapi" use-default-filters="true">
     </context:component-scan>
-
-    <!--<mvc:annotation-driven/>-->
     <!-- =================== -->
     <!--     映射处理器       -->
     <!-- =================== -->
@@ -49,6 +47,8 @@
             </list>
         </property>
     </bean>
-
+    <!-- =================== -->
+    <!--         其他         -->
+    <!-- =================== -->
     <bean class="com.company.project.webapi.support.context.SpringContext"/>
 </beans>
