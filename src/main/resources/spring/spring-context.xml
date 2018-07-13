@@ -4,8 +4,8 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
-    <context:component-scan base-package="com.company.project" use-default-filters="true">
-    </context:component-scan>
+    <!--<context:component-scan base-package="com.company.project" use-default-filters="true">-->
+    <!--</context:component-scan>-->
 
     <!--<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">-->
         <!--<property name="maxTotal" value="200"/>-->
