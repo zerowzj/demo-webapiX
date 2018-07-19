@@ -1,6 +1,7 @@
 package com.company.project.webapi.auth.filter;
 
 import com.company.project.webapi.auth.TrackKeys;
+import com.company.project.webapi.auth.Uris;
 import com.company.project.webapi.common.util.HttpServlets;
 import com.company.project.webapi.common.util.HttpWrites;
 import com.company.project.webapi.support.ext.JsonBodyRequest;
@@ -57,11 +58,11 @@ public class WatchDogFilter extends OncePerRequestFilter {
             }
             MDC.put(REQUEST_ID, requestId);
             //Uri
-            /*if (!Uris.isLegal(uri)) {
+            if (!Uris.isLegal(uri)) {
                 response.sendError(404);
                 LOGGER.warn("URI[{}]非法！", uri);
                 return;
-            }*/
+            }
 
             if (!HttpServlets.isMultipart(request)) {
                 request = new JsonBodyRequest(request);
