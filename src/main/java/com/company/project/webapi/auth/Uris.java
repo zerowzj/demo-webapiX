@@ -50,8 +50,9 @@ public final class Uris {
                 while (true) {
                     try {
                         TimeUnit.SECONDS.sleep(5);
-                        LOGGER.info("{}",LEGAL_URI_SET);
+                        LOGGER.info("加载前{}",LEGAL_URI_SET);
                         load();
+                        LOGGER.info("加载后{}",LEGAL_URI_SET);
                     } catch (Exception ex) {
                     }
                 }
