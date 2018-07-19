@@ -22,8 +22,10 @@ public final class Uris {
 
     /* 文件 */
     private static final String FILE = "uri.txt";
-    /* 字符 */
+    /* 字符集 */
     private static final Charset CHARSET = Charset.forName("UTF-8");
+
+    private static final Long TIME_PERIOD = 5L;
 
     private static Set<String> LEGAL_URI_SET;
 
@@ -43,16 +45,14 @@ public final class Uris {
 
     static {
         load();
-        //动态加载
+
         new Thread(new Runnable() {
             @Override
             public void run() {
                 while (true) {
                     try {
-                        TimeUnit.SECONDS.sleep(5);
-                        LOGGER.info("加载前{}",LEGAL_URI_SET);
+                        TimeUnit.SECONDS.sleep(TIME_PERIOD);
                         load();
-                        LOGGER.info("加载后{}",LEGAL_URI_SET);
                     } catch (Exception ex) {
                     }
                 }
