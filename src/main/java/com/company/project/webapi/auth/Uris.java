@@ -50,13 +50,13 @@ public final class Uris {
                 while (true) {
                     try {
                         TimeUnit.SECONDS.sleep(5);
-                        LOGGER.info("reload");
+                        LOGGER.info("{}",LEGAL_URI_SET);
                         load();
                     } catch (Exception ex) {
                     }
                 }
             }
-        }, "uri-reload").start();
+        }).start();
     }
 
     private static void load() {
