@@ -1,17 +1,15 @@
 package com.company.project.webapi.auth;
 
 import com.google.common.collect.Sets;
-import com.google.common.io.CharSource;
 import com.google.common.io.Resources;
-import org.apache.commons.configuration2.Configuration;
-import org.apache.commons.configuration2.PropertiesConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 /**
  * URIs
@@ -22,9 +20,12 @@ public final class Uris {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Uris.class);
 
+    /* 文件 */
     private static final String FILE = "uri.txt";
+    /* 字符 */
+    private static final Charset CHARSET = Charset.forName("UTF-8");
 
-    private static Set<String> LEGAL_URI_SET = Sets.newHashSet();
+    private static Set<String> LEGAL_URI_SET;
 
 //    static {
 //        RequestMappingHandlerMapping handlerMapping = SpringContext.getBean(RequestMappingHandlerMapping.class);
@@ -41,11 +42,28 @@ public final class Uris {
 //    }
 
     static {
+        load();
+        //动态加载
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        TimeUnit.SECONDS.sleep(5);
+                        LOGGER.info("reload");
+                        load();
+                    } catch (Exception ex) {
+                    }
+                }
+            }
+        }, "uri-reload").start();
+    }
+
+    private static void load() {
         try {
             URL url = Resources.getResource(FILE);
-            CharSource charSource = Resources.asCharSource(url, Charset.defaultCharset());
-            Reader reader = charSource.openStream();
-            Configuration config = new PropertiesConfiguration();
+            List<String> uriLt = Resources.readLines(url, CHARSET);
+            LEGAL_URI_SET = Sets.newHashSet(uriLt);
         } catch (Exception ex) {
             LOGGER.error("", ex);
         }
@@ -59,5 +77,9 @@ public final class Uris {
      */
     public static boolean isLegal(String uri) {
         return LEGAL_URI_SET.contains(uri);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(LEGAL_URI_SET);
     }
 }
