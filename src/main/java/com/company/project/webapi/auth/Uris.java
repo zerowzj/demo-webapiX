@@ -24,9 +24,9 @@ public final class Uris {
     private static final String FILE = "uri.txt";
     /* 字符集 */
     private static final Charset CHARSET = Charset.forName("UTF-8");
-
-    private static final Long TIME_PERIOD = 5L;
-
+    /* 加载周期 */
+    private static final Long TIME_PERIOD = 1 * 5L;
+    /* uri集合 */
     private static Set<String> LEGAL_URI_SET;
 
 //    static {
@@ -45,13 +45,13 @@ public final class Uris {
 
     static {
         load();
-
         new Thread(new Runnable() {
             @Override
             public void run() {
                 while (true) {
                     try {
                         TimeUnit.SECONDS.sleep(TIME_PERIOD);
+                        LOGGER.info("reload legal uri......");
                         load();
                     } catch (Exception ex) {
                     }
