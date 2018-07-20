@@ -3,7 +3,6 @@ package com.company.project.webapi.auth.filter;
 import com.company.project.webapi.auth.TrackKeys;
 import com.company.project.webapi.auth.Uris;
 import com.company.project.webapi.common.util.HttpServlets;
-import com.company.project.webapi.common.util.HttpWrites;
 import com.company.project.webapi.support.ext.JsonBodyRequest;
 import com.google.common.base.Stopwatch;
 import com.google.common.base.Strings;
@@ -53,13 +52,13 @@ public class WatchDogFilter extends OncePerRequestFilter {
             if (Strings.isNullOrEmpty(requestId)) {
                 requestId = "1234567890";
                 //LOGGER.warn("URI[{}]使用自动生成的request_id[{}]！", uri, requestId);
-                HttpWrites.write(response, "");
+                response.sendError(405, "request id为空");
                 return;
             }
             MDC.put(REQUEST_ID, requestId);
             //Uri
             if (!Uris.isLegal(uri)) {
-                response.sendError(404);
+                response.sendError(404, "URI非法");
                 LOGGER.warn("URI[{}]非法！", uri);
                 return;
             }
