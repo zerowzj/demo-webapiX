@@ -5,7 +5,7 @@ import com.google.common.collect.Maps;
 import java.util.Map;
 
 /**
- * 线程本地数据
+ * 线程本地存储
  *
  * @author wangzhj
  */
