@@ -1,8 +1,8 @@
 package com.company.project.webapi.auth.filter;
 
-import com.company.project.webapi.support.ThreadLocals;
 import com.company.project.webapi.auth.Uris;
 import com.company.project.webapi.common.util.HttpServlets;
+import com.company.project.webapi.support.ThreadLocals;
 import com.company.project.webapi.support.ext.JsonBodyRequest;
 import com.google.common.base.Stopwatch;
 import com.google.common.base.Strings;
@@ -21,8 +21,8 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 看门狗过滤器1111111111111111
- *123123123
+ * 看门狗过滤器
+ *
  * @author wangzhj
  */
 public class WatchDogFilter extends OncePerRequestFilter {
@@ -44,7 +44,7 @@ public class WatchDogFilter extends OncePerRequestFilter {
         HttpServletResponse response = HttpServlets.toHttp(servletResponse);
         String uri = request.getRequestURI();
         try {
-            System.out.println("+++++++++++++="+MDC.get(REQUEST_ID));
+            System.out.println("+++++++++++++=" + MDC.get(REQUEST_ID));
             //Request Id
             String requestId = request.getHeader(NAME_REQUEST_ID);
             ThreadLocals.setTrackKey(requestId);
