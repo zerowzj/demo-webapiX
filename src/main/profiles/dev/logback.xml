@@ -9,16 +9,15 @@
         </encoder>
     </appender>
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${LOG_HOME}/web-info.log</File>
+        <File>${LOG_HOME}/web-log.log</File>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] [%5level] [%class{1}:%line] [%X{request_id}] - %m%n</pattern>
         </encoder>
-        <!-- <filter class="ch.qos.logback.classic.filter.LevelFilter">
-             <level>DEBUG</level>
-             <onMatch>ACCEPT</onMatch>
-             <onMismatch>DENY</onMismatch>
-         </filter>-->
-
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>DEBUG</level>
         </filter>
