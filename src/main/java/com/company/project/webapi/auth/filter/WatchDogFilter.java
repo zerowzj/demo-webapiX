@@ -1,6 +1,6 @@
 package com.company.project.webapi.auth.filter;
 
-import com.company.project.webapi.auth.ThreadLocals;
+import com.company.project.webapi.support.ThreadLocals;
 import com.company.project.webapi.auth.Uris;
 import com.company.project.webapi.common.util.HttpServlets;
 import com.company.project.webapi.support.ext.JsonBodyRequest;

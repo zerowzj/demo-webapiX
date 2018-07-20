@@ -1,4 +1,4 @@
-package com.company.project.webapi.auth;
+package com.company.project.webapi.support;
 
 import com.google.common.collect.Maps;
 
