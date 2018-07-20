@@ -51,7 +51,7 @@ public final class Uris {
                 while (true) {
                     try {
                         TimeUnit.SECONDS.sleep(TIME_PERIOD);
-                        LOGGER.info("reload legal uri......");
+                        LOGGER.info("reload legal uri");
                         load();
                     } catch (Exception ex) {
                     }
