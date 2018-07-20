@@ -1,6 +1,6 @@
 package com.company.project.webapi.auth.filter;
 
-import com.company.project.webapi.auth.TrackKeys;
+import com.company.project.webapi.auth.ThreadLocals;
 import com.company.project.webapi.auth.Uris;
 import com.company.project.webapi.common.util.HttpServlets;
 import com.company.project.webapi.support.ext.JsonBodyRequest;
@@ -36,9 +36,7 @@ public class WatchDogFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(ServletRequest servletRequest, ServletResponse servletResponse,
                                     FilterChain filterChain) throws ServletException, IOException {
-
         LOGGER.info("I am WatchDogFilter!");
-
         //计时
         Stopwatch stopwatch = Stopwatch.createStarted();
         //
@@ -48,11 +46,9 @@ public class WatchDogFilter extends OncePerRequestFilter {
         try {
             //Request Id
             String requestId = request.getHeader(NAME_REQUEST_ID);
-            TrackKeys.set(requestId);
+            ThreadLocals.setTrackKey(requestId);
             if (Strings.isNullOrEmpty(requestId)) {
-                requestId = "1234567890";
-                //LOGGER.warn("URI[{}]使用自动生成的request_id[{}]！", uri, requestId);
-                response.sendError(405, "request id为空");
+                response.sendError(412, "request id为空");
                 return;
             }
             MDC.put(REQUEST_ID, requestId);
@@ -62,7 +58,7 @@ public class WatchDogFilter extends OncePerRequestFilter {
                 LOGGER.warn("URI[{}]非法！", uri);
                 return;
             }
-
+            //包装，上传文件不包装
             if (!HttpServlets.isMultipart(request)) {
                 request = new JsonBodyRequest(request);
             }
@@ -72,7 +68,7 @@ public class WatchDogFilter extends OncePerRequestFilter {
         } finally {
             LOGGER.info("===> URI[{}] cost [{} ms]", uri, stopwatch.elapsed(TimeUnit.MILLISECONDS));
             MDC.clear();
-            TrackKeys.remove();
+            ThreadLocals.removeTrackKey();
         }
     }
 }
