@@ -44,6 +44,7 @@ public class WatchDogFilter extends OncePerRequestFilter {
         HttpServletResponse response = HttpServlets.toHttp(servletResponse);
         String uri = request.getRequestURI();
         try {
+            System.out.println("+++++++++++++="+MDC.get(REQUEST_ID));
             //Request Id
             String requestId = request.getHeader(NAME_REQUEST_ID);
             ThreadLocals.setTrackKey(requestId);
@@ -67,7 +68,7 @@ public class WatchDogFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
         } finally {
             LOGGER.info("===> URI[{}] cost [{} ms]", uri, stopwatch.elapsed(TimeUnit.MILLISECONDS));
-//            MDC.clear();
+            MDC.clear();
 //            MDC.remove(REQUEST_ID);
             ThreadLocals.removeTrackKey();
         }
