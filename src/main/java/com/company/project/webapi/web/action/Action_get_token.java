@@ -29,6 +29,8 @@ public class Action_get_token extends BaseAction implements BeanNameAware, Initi
         data.put("ub_id", 666666);
         data.put("access_token", "0123456789");
         data.put("times", "2018");
+
+        cxt.getRequest().getCookies();
         return data;
     }
 
