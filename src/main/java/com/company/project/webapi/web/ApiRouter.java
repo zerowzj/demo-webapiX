@@ -1,8 +1,12 @@
 package com.company.project.webapi.web;
 
+import com.company.project.webapi.support.action.Action;
 import com.company.project.webapi.support.action.ActionExecutors;
 import com.company.project.webapi.support.web.Api;
 import com.google.common.base.Joiner;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,9 +20,16 @@ import java.util.Map;
  * @author wangzhj
  */
 @Api
-public class ApiRouter {
+public class ApiRouter implements ApplicationContextAware {
 
     private static final String ACTION_PREFIX = "action";
+
+    private static ApplicationContext CXT;
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        CXT = applicationContext;
+    }
 
     /**
      * 路由
@@ -33,7 +44,8 @@ public class ApiRouter {
     public Map<String, Object> routeByModule(@PathVariable String module, @PathVariable String action,
                                              HttpServletRequest request, HttpServletResponse response) {
         String actionName = Joiner.on("_").join(ACTION_PREFIX, module, action);
-        return ActionExecutors.execute(request, response, actionName);
+        Action actionBean = CXT.getBean(actionName, Action.class);
+        return actionBean.doProcess(request, response);
     }
 
     /**
