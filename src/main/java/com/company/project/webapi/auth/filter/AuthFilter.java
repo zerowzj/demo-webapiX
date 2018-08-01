@@ -31,10 +31,10 @@ public class AuthFilter extends AdviceFilter {
         Map<String, Object> paramMap = request.getParameterMap();
         try {
             //token过期或失效
-            if ("".equals("")) {
-                HttpWrites.write(response, "");
-                return false;
-            }
+//            if ("".equals("")) {
+//                HttpWrites.write(response, "");
+//                return false;
+//            }
         } catch (Exception ex) {
             throw ex;
         }
