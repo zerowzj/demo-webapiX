@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContextAware;
  *
  * @author wangzhj
  */
+@Deprecated
 public class SpringContext implements ApplicationContextAware {
 
     /* 应用上下文 */

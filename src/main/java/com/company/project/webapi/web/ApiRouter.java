@@ -1,9 +1,9 @@
 package com.company.project.webapi.web;
 
 import com.company.project.webapi.support.action.Action;
-import com.company.project.webapi.support.action.ActionExecutors;
 import com.company.project.webapi.support.web.Api;
 import com.google.common.base.Joiner;
+import com.google.common.base.Strings;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -24,6 +24,7 @@ public class ApiRouter implements ApplicationContextAware {
 
     private static final String ACTION_PREFIX = "action";
 
+    /* Spring容器上下文 */
     private static ApplicationContext CXT;
 
     @Override
@@ -40,26 +41,17 @@ public class ApiRouter implements ApplicationContextAware {
      * @param response Http响应
      * @return Map
      */
-    @RequestMapping("/{module}/{action}")
+    @RequestMapping(value = {"/{action}", "/{module}/{action}"})
     public Map<String, Object> routeByModule(@PathVariable String module, @PathVariable String action,
                                              HttpServletRequest request, HttpServletResponse response) {
-        String actionName = Joiner.on("_").join(ACTION_PREFIX, module, action);
+        String[] array = new String[]{};
+        if(!Strings.isNullOrEmpty(module)){
+        }
+        String actionName = Joiner.on("_").join(ACTION_PREFIX, array);
+        if (!CXT.containsBean(actionName)) {
+            throw new IllegalStateException("");
+        }
         Action actionBean = CXT.getBean(actionName, Action.class);
         return actionBean.doProcess(request, response);
-    }
-
-    /**
-     * 路由
-     *
-     * @param action   动作
-     * @param request  Http请求
-     * @param response Http响应
-     * @return Map
-     */
-    @RequestMapping("/{action}")
-    public Map<String, Object> route(@PathVariable String action,
-                                     HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String actionName = Joiner.on("_").join(ACTION_PREFIX, action);
-        return ActionExecutors.execute(request, response, actionName);
     }
 }
