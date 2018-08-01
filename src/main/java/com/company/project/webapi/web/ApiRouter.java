@@ -45,7 +45,7 @@ public class ApiRouter implements ApplicationContextAware {
     public Map<String, Object> routeByModule(@PathVariable String module, @PathVariable String action,
                                              HttpServletRequest request, HttpServletResponse response) {
         String[] array = new String[]{};
-        if(!Strings.isNullOrEmpty(module)){
+        if (!Strings.isNullOrEmpty(module)) {
         }
         String actionName = Joiner.on("_").join(ACTION_PREFIX, array);
         if (!CXT.containsBean(actionName)) {
