@@ -3,7 +3,6 @@ package com.company.project.webapi.web;
 import com.company.project.webapi.support.action.Action;
 import com.company.project.webapi.support.web.Api;
 import com.google.common.base.Joiner;
-import com.google.common.base.Strings;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -44,9 +43,10 @@ public class ApiRouter implements ApplicationContextAware {
     @RequestMapping(value = {"/{action}", "/{module}/{action}"})
     public Map<String, Object> routeByModule(@PathVariable String module, @PathVariable String action,
                                              HttpServletRequest request, HttpServletResponse response) {
-        String[] array = new String[]{};
-        if (!Strings.isNullOrEmpty(module)) {
-        }
+        return doProcess(request, response, module, action);
+    }
+
+    private Map<String, Object> doProcess(HttpServletRequest request, HttpServletResponse response, String... array) {
         String actionName = Joiner.on("_").join(ACTION_PREFIX, array);
         if (!CXT.containsBean(actionName)) {
             throw new IllegalStateException("");
